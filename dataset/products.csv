@@ -1,0 +1,101 @@
+﻿product_id,product_name,brand,category,unit_price,stock_quantity
+1,Smartphone,Samsung,Electronics,51261.32,32
+2,Laptop,Dell,Electronics,59400.57,145
+3,Headphones,Sony,Electronics,18088.9,72
+4,Smartwatch,Apple,Electronics,54231.95,299
+5,Tablet,Lenovo,Electronics,7228.02,236
+6,Bluetooth Speaker,JBL,Electronics,2832.08,67
+7,Monitor,LG,Electronics,17724.45,278
+8,Keyboard,Logitech,Electronics,48279.89,121
+9,Mouse,Logitech,Electronics,57365.76,299
+10,Power Bank,Mi,Electronics,33734.73,249
+11,Camera,Canon,Electronics,47263.48,23
+12,Printer,HP,Electronics,60775.95,101
+13,SSD,Western Digital,Electronics,55940.71,194
+14,Router,TP-Link,Electronics,22445.35,130
+15,Earbuds,boAt,Electronics,76588.88,192
+16,Gaming Console,Sony,Electronics,8445.16,214
+17,Webcam,Logitech,Electronics,8007.3,196
+18,Microphone,Blue,Electronics,48415.96,42
+19,Projector,Epson,Electronics,58458.62,294
+20,USB Drive,SanDisk,Electronics,10247.65,213
+21,T-Shirt,Nike,Fashion,6579.38,170
+22,Jeans,Levi's,Fashion,66402.55,205
+23,Sneakers,Adidas,Fashion,46313.97,55
+24,Jacket,Puma,Fashion,3951.2,136
+25,Shirt,Allen Solly,Fashion,61912.55,60
+26,Kurta,FabIndia,Fashion,68467.82,71
+27,Dress,Zara,Fashion,30595.06,252
+28,Handbag,Lavie,Fashion,50963.05,206
+29,Sunglasses,Ray-Ban,Fashion,13262.53,201
+30,Watch,Fastrack,Fashion,16996.71,156
+31,Cap,Nike,Fashion,56234.08,56
+32,Wallet,Wildcraft,Fashion,48846.74,107
+33,Belt,Woodland,Fashion,42869.95,145
+34,Socks,Puma,Fashion,13322.18,214
+35,Sandals,Bata,Fashion,21813.84,132
+36,Hoodie,H&M,Fashion,54862.76,48
+37,Track Pants,Adidas,Fashion,18554.13,36
+38,Scarf,Zara,Fashion,64461.15,225
+39,Formal Shoes,Red Tape,Fashion,21637.95,128
+40,Backpack,Skybags,Fashion,73075.95,181
+41,Mixer Grinder,Philips,Home & Kitchen,17245.34,275
+42,Vacuum Cleaner,Eureka Forbes,Home & Kitchen,31830.86,254
+43,Cookware Set,Prestige,Home & Kitchen,11685.87,91
+44,Water Bottle,Milton,Home & Kitchen,19955.21,295
+45,Air Fryer,Philips,Home & Kitchen,21239.51,239
+46,Electric Kettle,Prestige,Home & Kitchen,71855.48,224
+47,Pressure Cooker,Hawkins,Home & Kitchen,29150.12,90
+48,Dinner Set,Cello,Home & Kitchen,40908.25,66
+49,Storage Box,Cello,Home & Kitchen,60534.84,76
+50,Bedsheet,Bombay Dyeing,Home & Kitchen,12480.45,101
+51,Pillow,Sleepwell,Home & Kitchen,63427.73,236
+52,Ceiling Fan,Havells,Home & Kitchen,47832.8,217
+53,LED Bulb,Syska,Home & Kitchen,30714.06,259
+54,Room Heater,Bajaj,Home & Kitchen,42469.41,25
+55,Iron,Philips,Home & Kitchen,54517.59,78
+56,Toaster,Morphy Richards,Home & Kitchen,54631.32,294
+57,Coffee Maker,Prestige,Home & Kitchen,60143.96,194
+58,Knife Set,Pigeon,Home & Kitchen,9189.71,242
+59,Water Purifier,Kent,Home & Kitchen,12904.17,21
+60,Gas Stove,Sunflame,Home & Kitchen,76318.13,154
+61,Novel,Penguin,Books,77758.48,111
+62,Data Analytics,O'Reilly,Books,40761.23,74
+63,SQL Guide,Packt,Books,69679.33,172
+64,Python Programming,No Starch,Books,67380.05,279
+65,Business Strategy,McGraw Hill,Books,48833.93,98
+66,Finance Basics,Pearson,Books,30099.93,102
+67,Machine Learning,Springer,Books,43287.51,291
+68,Product Management,Pearson,Books,73502.93,185
+69,Biography,HarperCollins,Books,39240.87,77
+70,Self Help,Penguin,Books,74348.16,177
+71,History,Oxford,Books,19383.35,143
+72,Science,Pearson,Books,70276.37,60
+73,Children Book,Scholastic,Books,7125.58,268
+74,Mystery,Penguin,Books,65336.05,292
+75,Romance,HarperCollins,Books,61336,85
+76,Cookbook,DK,Books,52881.14,104
+77,Travel Guide,Lonely Planet,Books,21424.01,236
+78,Economics,McGraw Hill,Books,77158.72,296
+79,Marketing,Pearson,Books,60493.64,122
+80,Statistics,Wiley,Books,57121.03,224
+81,Cricket Bat,SG,Sports,79612.4,211
+82,Football,Nivia,Sports,35215.58,284
+83,Badminton Racket,Yonex,Sports,36282.45,146
+84,Yoga Mat,Boldfit,Sports,18207.38,193
+85,Dumbbell Set,Kore,Sports,1975.43,137
+86,Tennis Ball,Cosco,Sports,47197.68,23
+87,Basketball,Spalding,Sports,5957.15,50
+88,Helmet,Vector X,Sports,18545.66,36
+89,Cycling Gloves,BTWIN,Sports,68811.94,56
+90,Skipping Rope,Decathlon,Sports,41277.24,162
+91,Gym Bag,Puma,Sports,53616.53,129
+92,Protein Shaker,Boldfit,Sports,43275.94,262
+93,Running Shoes,Asics,Sports,19665.88,262
+94,Resistance Band,Boldfit,Sports,64656.51,117
+95,Volleyball,Cosco,Sports,7816.77,240
+96,Table Tennis Bat,Stag,Sports,28536.52,230
+97,Swimming Goggles,Speedo,Sports,37520.87,47
+98,Cricket Gloves,SG,Sports,53966.15,70
+99,Football Shoes,Adidas,Sports,5129.83,193
+100,Chess Set,StonKraft,Sports,64106.22,75
