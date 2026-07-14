@@ -409,3 +409,112 @@ WHERE revenue >
     FROM category_revenue
 )
 ORDER BY revenue DESC;
+
+-- ==========================================
+-- WINDOW FUNCTIONS
+-- ==========================================
+
+-- 51. Rank customers based on total spending
+SELECT
+    customer_id,
+    ROUND(SUM(total_amount),2) AS total_spent,
+    RANK() OVER(ORDER BY SUM(total_amount) DESC) AS customer_rank
+FROM orders
+GROUP BY customer_id;
+
+-- 52. Dense rank customers by spending
+SELECT
+    customer_id,
+    ROUND(SUM(total_amount),2) AS total_spent,
+    DENSE_RANK() OVER(ORDER BY SUM(total_amount) DESC) AS dense_customer_rank
+FROM orders
+GROUP BY customer_id;
+
+-- 53. Row number for products based on price
+SELECT
+    product_name,
+    category,
+    unit_price,
+    ROW_NUMBER() OVER(ORDER BY unit_price DESC) AS row_num
+FROM products;
+
+-- 54. Rank products within each category by price
+SELECT
+    product_name,
+    category,
+    unit_price,
+    RANK() OVER(
+        PARTITION BY category
+        ORDER BY unit_price DESC
+    ) AS category_rank
+FROM products;
+
+-- 55. Running revenue by order date
+SELECT
+    order_date,
+    total_amount,
+    SUM(total_amount)
+    OVER(
+        ORDER BY order_date
+    ) AS running_revenue
+FROM orders;
+
+-- 56. Previous order amount using LAG()
+SELECT
+    order_id,
+    order_date,
+    total_amount,
+    LAG(total_amount)
+    OVER(ORDER BY order_date) AS previous_order_amount
+FROM orders;
+
+-- 57. Next order amount using LEAD()
+SELECT
+    order_id,
+    order_date,
+    total_amount,
+    LEAD(total_amount)
+    OVER(ORDER BY order_date) AS next_order_amount
+FROM orders;
+
+-- 58. Average order amount by customer
+SELECT
+    customer_id,
+    order_id,
+    total_amount,
+    ROUND(
+        AVG(total_amount)
+        OVER(PARTITION BY customer_id),2
+    ) AS avg_customer_order
+FROM orders;
+
+-- 59. Highest priced product in each category
+SELECT *
+FROM
+(
+    SELECT
+        product_name,
+        category,
+        unit_price,
+        ROW_NUMBER() OVER(
+            PARTITION BY category
+            ORDER BY unit_price DESC
+        ) AS rn
+    FROM products
+) t
+WHERE rn = 1;
+
+-- 60. Top 3 customers by spending
+SELECT *
+FROM
+(
+    SELECT
+        customer_id,
+        ROUND(SUM(total_amount),2) AS total_spent,
+        DENSE_RANK() OVER(
+            ORDER BY SUM(total_amount) DESC
+        ) AS rnk
+    FROM orders
+    GROUP BY customer_id
+) t
+WHERE rnk <= 3;
