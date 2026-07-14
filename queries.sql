@@ -254,3 +254,75 @@ INNER JOIN order_items oi
 ON p.product_id = oi.product_id
 GROUP BY p.category
 ORDER BY products_sold DESC;
+
+-- ==========================================
+-- SUBQUERIES
+-- ==========================================
+
+-- 41. Customers who have spent more than the average customer spending
+SELECT customer_id,
+       customer_name,
+       total_spent
+FROM
+(
+    SELECT c.customer_id,
+           CONCAT(c.first_name,' ',c.last_name) AS customer_name,
+           SUM(o.total_amount) AS total_spent
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    GROUP BY c.customer_id, c.first_name, c.last_name
+) customer_sales
+WHERE total_spent >
+(
+    SELECT AVG(total_spent)
+    FROM
+    (
+        SELECT SUM(total_amount) AS total_spent
+        FROM orders
+        GROUP BY customer_id
+    ) avg_sales
+);
+
+-- 42. Products priced above the average product price
+SELECT *
+FROM products
+WHERE unit_price >
+(
+    SELECT AVG(unit_price)
+    FROM products
+);
+
+-- 43. Orders having total amount greater than average order amount
+SELECT *
+FROM orders
+WHERE total_amount >
+(
+    SELECT AVG(total_amount)
+    FROM orders
+);
+
+-- 44. Customers who placed the maximum number of orders
+SELECT customer_id,
+       COUNT(*) AS total_orders
+FROM orders
+GROUP BY customer_id
+HAVING COUNT(*) =
+(
+    SELECT MAX(order_count)
+    FROM
+    (
+        SELECT COUNT(*) AS order_count
+        FROM orders
+        GROUP BY customer_id
+    ) x
+);
+
+-- 45. Products never sold
+SELECT product_name
+FROM products
+WHERE product_id NOT IN
+(
+    SELECT DISTINCT product_id
+    FROM order_items
+);
