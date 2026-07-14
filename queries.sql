@@ -326,3 +326,86 @@ WHERE product_id NOT IN
     SELECT DISTINCT product_id
     FROM order_items
 );
+
+-- ==========================================
+-- COMMON TABLE EXPRESSIONS (CTEs)
+-- ==========================================
+
+-- 46. Top 10 customers by total spending
+WITH customer_sales AS
+(
+    SELECT
+        c.customer_id,
+        CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+        SUM(o.total_amount) AS total_spent
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    GROUP BY c.customer_id, c.first_name, c.last_name
+)
+SELECT *
+FROM customer_sales
+ORDER BY total_spent DESC
+LIMIT 10;
+
+-- 47. Revenue by category
+WITH category_sales AS
+(
+    SELECT
+        p.category,
+        SUM(oi.quantity * oi.selling_price) AS revenue
+    FROM products p
+    JOIN order_items oi
+        ON p.product_id = oi.product_id
+    GROUP BY p.category
+)
+SELECT *
+FROM category_sales
+ORDER BY revenue DESC;
+
+-- 48. Customers with more than 5 orders
+WITH customer_orders AS
+(
+    SELECT
+        customer_id,
+        COUNT(*) AS total_orders
+    FROM orders
+    GROUP BY customer_id
+)
+SELECT *
+FROM customer_orders
+WHERE total_orders > 5
+ORDER BY total_orders DESC;
+
+-- 49. Average revenue generated per customer
+WITH customer_revenue AS
+(
+    SELECT
+        customer_id,
+        SUM(total_amount) AS revenue
+    FROM orders
+    GROUP BY customer_id
+)
+SELECT
+    ROUND(AVG(revenue),2) AS average_customer_revenue
+FROM customer_revenue;
+
+-- 50. Categories having revenue above average category revenue
+WITH category_revenue AS
+(
+    SELECT
+        p.category,
+        SUM(oi.quantity * oi.selling_price) AS revenue
+    FROM products p
+    JOIN order_items oi
+        ON p.product_id = oi.product_id
+    GROUP BY p.category
+)
+SELECT *
+FROM category_revenue
+WHERE revenue >
+(
+    SELECT AVG(revenue)
+    FROM category_revenue
+)
+ORDER BY revenue DESC;
