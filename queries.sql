@@ -78,3 +78,80 @@ FROM products;
 -- 20. Average product price
 SELECT ROUND(AVG(unit_price), 2) AS average_product_price
 FROM products;
+
+-- ==========================================
+-- GROUP BY & HAVING
+-- ==========================================
+
+-- 21. Number of customers in each state
+SELECT state,
+       COUNT(*) AS total_customers
+FROM customers
+GROUP BY state
+ORDER BY total_customers DESC;
+
+-- 22. Number of customers in each city
+SELECT city,
+       COUNT(*) AS total_customers
+FROM customers
+GROUP BY city
+ORDER BY total_customers DESC;
+
+-- 23. Number of products in each category
+SELECT category,
+       COUNT(*) AS total_products
+FROM products
+GROUP BY category
+ORDER BY total_products DESC;
+
+-- 24. Average product price by category
+SELECT category,
+       ROUND(AVG(unit_price),2) AS average_price
+FROM products
+GROUP BY category
+ORDER BY average_price DESC;
+
+-- 25. Total stock by category
+SELECT category,
+       SUM(stock_quantity) AS total_stock
+FROM products
+GROUP BY category
+ORDER BY total_stock DESC;
+
+-- 26. Number of orders by status
+SELECT order_status,
+       COUNT(*) AS total_orders
+FROM orders
+GROUP BY order_status
+ORDER BY total_orders DESC;
+
+-- 27. Revenue by order status
+SELECT order_status,
+       ROUND(SUM(total_amount),2) AS revenue
+FROM orders
+GROUP BY order_status
+ORDER BY revenue DESC;
+
+-- 28. States having more than 20 customers
+SELECT state,
+       COUNT(*) AS total_customers
+FROM customers
+GROUP BY state
+HAVING COUNT(*) > 20
+ORDER BY total_customers DESC;
+
+-- 29. Categories having average price greater than 20000
+SELECT category,
+       ROUND(AVG(unit_price),2) AS average_price
+FROM products
+GROUP BY category
+HAVING AVG(unit_price) > 20000
+ORDER BY average_price DESC;
+
+-- 30. Order status having more than 100 orders
+SELECT order_status,
+       COUNT(*) AS total_orders
+FROM orders
+GROUP BY order_status
+HAVING COUNT(*) > 100
+ORDER BY total_orders DESC;
