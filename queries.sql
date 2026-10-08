@@ -192,13 +192,19 @@ GROUP BY c.customer_id, c.first_name, c.last_name
 ORDER BY total_orders DESC;
 
 -- 34. Top 10 customers by total spending
-SELECT c.customer_id,
-       CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
-       ROUND(SUM(o.total_amount),2) AS total_spent
+SELECT 
+    c.customer_id,
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    ROUND(SUM(oi.quantity * oi.selling_price), 2) AS total_spent
 FROM customers c
-INNER JOIN orders o
-ON c.customer_id = o.customer_id
-GROUP BY c.customer_id, c.first_name, c.last_name
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN order_items oi
+    ON o.order_id = oi.order_id
+GROUP BY 
+    c.customer_id,
+    c.first_name,
+    c.last_name
 ORDER BY total_spent DESC
 LIMIT 10;
 
