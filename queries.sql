@@ -56,8 +56,9 @@ SELECT COUNT(*) AS total_order_items
 FROM order_items;
 
 -- 15. Total revenue generated
-SELECT SUM(total_amount) AS total_revenue
-FROM orders;
+SELECT 
+    ROUND(SUM(quantity * selling_price), 2) AS total_revenue
+FROM order_items;
 
 -- 16. Average order value
 SELECT ROUND(AVG(total_amount), 2) AS average_order_value
